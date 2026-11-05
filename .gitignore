@@ -1,0 +1,33 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.synctex.gz
+*.listing
+
+# Python
+__pycache__/
+*.py[cod]
+*.npy
+
+# Generated heightmap outputs
+src/contour_map.png
+src/heightmap_visualization.png
+
+# ROS
+devel/
+build/
+install/
+
+# Archives / OS files
+/*.zip
+/*.rar
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/

@@ -1,0 +1,20 @@
+<launch>
+  <!-- Panda + MoveIt core: OMPL planner with the fake interpolating controller -->
+  <include file="$(find panda_moveit_config)/launch/demo.launch">
+    <arg name="arm_id" value="panda" />
+    <arg name="pipeline" value="ompl" />
+    <arg name="moveit_controller_manager" value="fake" />
+    <arg name="fake_execution_type" value="interpolate" />
+  </include>
+
+  <!-- RViz with the terrain-builder visualization layout -->
+  <node name="rviz" pkg="rviz" type="rviz"
+        args="-d $(find panda_moveit_config)/launch/terrain_builder.rviz" />
+
+  <!-- Start the builder after MoveIt / RViz have finished initializing -->
+  <node name="terrain_builder"
+        pkg="panda_moveit_config"
+        type="terrain_builder.py"
+        output="screen"
+        launch-prefix="bash -c 'sleep 3; exec $0 $@'" />
+</launch>
